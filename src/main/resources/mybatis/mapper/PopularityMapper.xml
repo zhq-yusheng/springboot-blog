@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yu.myblog.mapper.PopularityMapper">
+
+    <select id="getSevenDayPopularity" resultType="com.yu.myblog.pojo.view.EvenDayPopularityView">
+        SELECT COUNT(1) popularity,DATE_SUB(CURDATE(),INTERVAL 0 DAY) DATE FROM popularity WHERE TO_DAYS( NOW( ) ) - TO_DAYS( createDATETIME) = 0
+            UNION ALL
+        SELECT COUNT(1) popularity,DATE_SUB(CURDATE(),INTERVAL 1 DAY) DATE FROM popularity WHERE TO_DAYS( NOW( ) ) - TO_DAYS( createDATETIME) = 1
+            UNION ALL
+        SELECT COUNT(1) popularity,DATE_SUB(CURDATE(),INTERVAL 2 DAY) DATE FROM popularity WHERE TO_DAYS( NOW( ) ) - TO_DAYS( createDATETIME) = 2
+            UNION ALL
+        SELECT COUNT(1) popularity,DATE_SUB(CURDATE(),INTERVAL 3 DAY) DATE FROM popularity WHERE TO_DAYS( NOW( ) ) - TO_DAYS( createDATETIME) = 3
+            UNION ALL
+        SELECT COUNT(1) popularity,DATE_SUB(CURDATE(),INTERVAL 4 DAY) DATE FROM popularity WHERE TO_DAYS( NOW( ) ) - TO_DAYS( createDATETIME) = 4
+            UNION ALL
+        SELECT COUNT(1) popularity,DATE_SUB(CURDATE(),INTERVAL 5 DAY) DATE FROM popularity WHERE TO_DAYS( NOW( ) ) - TO_DAYS( createDATETIME) = 5
+            UNION ALL
+        SELECT COUNT(1) popularity,DATE_SUB(CURDATE(),INTERVAL 6 DAY) DATE FROM popularity WHERE TO_DAYS( NOW( ) ) - TO_DAYS( createDATETIME) = 6
+    </select>
+
+</mapper>

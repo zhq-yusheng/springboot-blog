@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yu.myblog.mapper.BlogMapper">
+
+    <select id="getBlogTopFiv" resultType="com.yu.myblog.pojo.view.BlogTopFiveView">
+        select
+        title as blogName,
+        (select count(*) from popularity where popularity.bid = b.bid ) as popularity
+        from blog b
+        where
+            b.deleted = 0
+        order by popularity desc
+        limit 0,5
+    </select>
+
+</mapper>
