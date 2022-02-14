@@ -41,6 +41,7 @@ public class Blog {
     @TableField(fill = FieldFill.INSERT)
     private Date createDatetime;
 
+    private int istoping;  // 置顶
     @TableLogic  //逻辑删除注解
     private int deleted;
 

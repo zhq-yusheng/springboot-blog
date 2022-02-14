@@ -30,4 +30,5 @@ public interface BackstageService {
     ResultDao getMyBlogbyPage(int uid,int currPage,int pageSize); //根据id查询用户博客信息
     ResultDao getBlogCount();
     ResultDao getAuthorCount();
+    ResultDao toping(int bid,int flag); // 置顶方法
 }

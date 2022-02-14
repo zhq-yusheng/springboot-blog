@@ -238,4 +238,18 @@ public class BackstageServiceImpl implements BackstageService {
         resultDao.setData(blogCountViews);
         return resultDao;
     }
+
+    @Override
+    public ResultDao toping(int bid, int flag) {
+        Blog blog = blogMapper.selectById(bid);
+        blog.setIstoping(flag);
+        int update = blogMapper.updateById(blog);
+        ResultDao<Object> resultDao = new ResultDao<>();
+        if(update == 1){
+            resultDao.setCode(200);
+        }else{
+            resultDao.setCode(400);
+        }
+        return resultDao;
+    }
 }

@@ -10,13 +10,14 @@ titlehtml,
 titleimg,
 body,
 bodyHtml,
+istoping,
 (SELECT COUNT(*) FROM popularity WHERE popularity.`bid` = blog.`bid`) popularity,
-blog.`createDatetime`
+blog.`createDatetime` createDatetime
 FROM
 blog
 LEFT JOIN USER ON blog.uid = user.uid
 LEFT JOIN blog_type ON blog.btid = blog_type.`btid`
-WHERE blog.`deleted` = 0;
+WHERE blog.`deleted` = 0 ORDER BY istoping DESC, popularity DESC;
 
 
 
@@ -40,14 +41,16 @@ FROM DUAL
 CREATE VIEW myblog_view AS 
 SELECT
 bid,
+uid,
 title,
 (SELECT blogtype FROM blog_type bt WHERE bt.btid = b.btid) AS blogType,
 (SELECT COUNT(1) FROM popularity p WHERE p.bid = b.bid) AS popularity,
 titleimg,
 body,
+istoping,
 createDatetime
 FROM 
-blog b WHERE b.deleted = 0
+blog b WHERE b.deleted = 0 ORDER BY istoping DESC
 
 
 CREATE VIEW blog_count_view AS 

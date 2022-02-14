@@ -27,5 +27,6 @@ public class MyblogView {
     private int popularity;
     private String titleimg;
     private String body;
+    private int istoping;
     private Date createDatetime;
 }

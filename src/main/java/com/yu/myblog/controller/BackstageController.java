@@ -93,4 +93,9 @@ public class BackstageController {
         return backstageService.getAuthorCount();
     }
 
+    @GetMapping("toping/{bid}/{flag}")
+    public ResultDao toping(@PathVariable("bid") int bid,@PathVariable("flag") int flag){
+        return backstageService.toping(bid, flag);
+    }
+
 }
